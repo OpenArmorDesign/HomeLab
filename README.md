@@ -49,12 +49,20 @@ The network is 192.168.0.0, split into /24 segments:
 
 ## A Problem I Troubleshot
 
-[TODO: Replace this with one real fault. Cover the symptom, what you checked and in what order, the root cause, and the fix. Include how long it took and what you would check first next time.]
+**Symptom:** One security camera had frequent, random connectivity dropouts. The UniFi control panel showed it as connected the whole time, so nothing in the software pointed to a problem. A link that stays up while traffic drops points toward the physical layer, not configuration.
+
+**Cause:** I had run shielded Cat6A, and the shield was not grounded properly. An ungrounded shield doesn't protect the signal and can pick up interference instead.
+
+**Fix:** Since every run is indoors, I replaced all of the shielded cable with unshielded. The dropouts stopped. Shielded cable only pays off when it is terminated and grounded correctly end to end, and indoors in a home it wasn't worth the added complexity.
+
+**Takeaway:** Cable and grounding faults look like network faults. I now check the physical layer first.
 
 ## What I'd Improve Next
 
-[TODO: One or two planned improvements.]
+- **UPS** for the router, core switch, and Pi-holes, so a power blip doesn't take down routing and DNS.
+- **Doorbell and backyard camera** on the Cameras VLAN, which means planning PoE capacity and new cable runs.
+- **Switch consolidation:** evaluating a single larger PoE switch with 2.5 GbE ports in place of several smaller switches. This depends on whether the cable runs can reasonably home-run to one location, and on the single point of failure it creates.
 
 ## What This Lab Covers
 
-Physical cabling and PoE, VLAN segmentation, inter-VLAN firewall rules, DNS (Pi-hole and a recursive Unbound resolver), wireless coverage across floors, and self-hosted services. I am working toward CCNA and Security+ certification.
+Physical cabling and PoE, VLAN segmentation, inter-VLAN firewall rules, DNS (Pi-hole and a recursive Unbound resolver), wireless coverage across floors, and self-hosted services. I am working toward CCNA and Security+ certification.inter-VLAN firewall rules, DNS (Pi-hole and a recursive Unbound resolver), wireless coverage across floors, and self-hosted services. I am working toward CCNA and Security+ certification.
