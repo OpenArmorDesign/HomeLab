@@ -4,7 +4,6 @@ A segmented home network built on UniFi, designed for reliability and isolation.
 
 ## Topology
 
-![Network diagram](network-diagram.png)
 
 Wired and Wi-Fi client devices are not shown.
 
